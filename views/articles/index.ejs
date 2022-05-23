@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+  <style>
+    body{
+      background-color: rgb(238, 255, 250);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+      h1{
+        text-align: center;
+        /* color: rgb(255, 255, 255); */
+        color: blue;
+        /* color: white; */
+        font-weight: bold;
+        /* margin-top: 5vh; */
+      }
+      span{
+        isolation: isolate;
+      }
+      h4{
+        /* text-align: center; */
+        color: rgb(255, 0, 76);
+        font-weight: bold;
+        /* margin-top: 5vh; */
+      }
+      .new_btn{
+        text-align: center;
+      }
+      hr{
+        font-weight: bold;
+        height: 2px;
+        background-color: rgb(68, 68, 68);
+        margin-top: 2px;
+      }
+      /* .p_btn{
+        background-color: black;
+        outline: none;
+        border: none;
+      } */
+      .about-section {
+        padding: 30px;
+        text-align: center;
+        background-color: #474e5d;
+        color: white;
+        margin-top: 1px;
+      }
+  </style>
+</head>
+<body>
+  <div class="loader-wrapper">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+  <div>
+    <%- include('navbar.ejs') %>
+  </div>
+  <!-- <hr> -->
+  
+  <div class="container">
+    <!-- <div class="container-fluid about-section"> -->
+      <h1 class="mb-2 mt-2">Blog Articles</h1>
+      <!-- </div> -->
+      <br>
+      <div class="new_btn">
+      <a href="/articles/new" class="btn btn-success btn-block p_btn" > <span> Click Here to create your article </span></a>
+    
+  </div>
+  <br><br>
+    <% articles.forEach(article => { %>
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title" "><%= article.title %></h4>
+          <div class="card-subtitle text-muted mb-2">
+            Created on : 
+            <%= article.createdAt.toLocaleDateString() %>
+          </div>
+          <div class="card-text mb-2" style="font-weight: bold;"><%= article.description %></div>
+          <a href="articles/<%= article.slug %>" class="btn btn-primary btn-outline-primary">Read Article</a>
+          <a href="articles/edit/<%= article.id %>" class="btn btn-info btn-outline-info">Edit</a>
+          <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger btn-outline-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"> -->
+    <%- include('darkmode.ejs') %>
+  <!-- </script> -->
+  <script>
+    $(window).on("load",function(){
+     $(".loader-wrapper").fadeOut("slow");
+});
+  </script>
+</body>
+</html>

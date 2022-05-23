@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(238, 255, 250);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+  isolation: isolate;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+    </style>
+</head>
+<body>
+    <div>
+        <%- include('navbar.ejs') %>
+      </div>
+      <!-- <img src="C:\Users\my pc\Desktop\New folder\node\blog\views\articles\ak.jpeg" alt="ak"> -->
+      <div class="about-section">
+        <h1>About Us</h1>
+        <p>Abhinav Kaushik is a Full Stack Web Developer and a Competetive Programmer</p>
+        <p>Data Science and ML Aspirant</p>
+        <!-- <p>Resize the browser window to see that this page is responsive by the way.</p> -->
+      </div>
+      <br>
+      <!-- <h2 style="text-align:center">Our Team</h2> -->
+    <br>
+      <div class="container h-100">
+      <div class="row text-center">
+        <div class="col-6 mx-auto">
+          <div class="card">
+            <!-- <img src="ak.jpeg" alt="Jane" style="width:100%"> -->
+            <div class="container ">
+              <h2>Abhinav Kaushik</h2>
+              <p class="title">Full Stack Developer</p>
+              <!-- <p>Full Stack Developer</p> -->
+              <p>abhinavkaushik0202@gmail.com</p>
+              <!-- <p><a href="https://github.com/abhinavk2404" style="text-decoration: none; color: white;" target="blank"><button class="button"> Contact </button></a></p> -->
+              <!-- <a href="contact" class="btn btn primary" target="blank">Contact</a> -->
+              <p><a href="contact" style="text-decoration: none; color: white;" target="blank"><button class="button"> Contact </button></a></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('darkmode.ejs') %>
+</body>
+</html>

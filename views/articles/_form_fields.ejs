@@ -1,0 +1,15 @@
+<div class="form-group">
+  <label for="title" style="font-weight: bold; color: blueviolet; font-size: 20px;">Title</label>
+  <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control">
+</div>
+<div class="form-group">
+  <label for="description" style="font-weight: bold; color: blueviolet; font-size: 20px;">Description</label>
+  <textarea name="description" id="description" class="form-control"><%= article.description %></textarea>
+</div>
+<div class="form-group">
+  <label for="markdown" style="font-weight: bold; color: blueviolet; font-size: 20px;">Article</label>
+  <textarea required name="markdown" id="markdown" class="form-control" style="height: 30vh;"><%= article.markdown %></textarea>
+</div>
+
+<a href="/" class="btn btn-danger btn-lg">Cancel</a>
+<button type="submit" class="btn btn-success float-right btn-lg">Save</button>

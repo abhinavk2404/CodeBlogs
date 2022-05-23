@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+  <style>
+    .bc{
+      background-color: rgb(238, 238, 238);
+      
+      /* color: rgb(255, 255, 0); */
+      /* margin: auto; */
+      /* margin-top: 3vh; */
+    }
+    .inside{
+        margin-left: 3vw;
+        font-weight: bold;
+        /* color: blueviolet; */
+        /* margin-top: 3vh; */
+        font-size: 18px;
+    }
+    h1{
+      text-align: center;
+      color: blue;
+      font-weight: bold;
+      margin-top: 5vh;
+    }
+    .new_btn{
+      text-align: center;
+    }
+    body{
+      background-color: rgb(238, 255, 250);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #copy_btn{
+      font-size: 18px;
+      /* isolation: isolate; */
+    }
+</style>
+</head>
+<body>
+  <div>
+    <%- include('navbar.ejs') %>
+  </div>
+  <div class="container">
+    <h1 class="mb-1"><%= article.title %></h1>
+    <br>
+    <div class="new_btn btn-block">
+      <div class="text-muted mb-2 ">
+        Created on :
+        <%= article.createdAt.toLocaleDateString() %>
+      </div>
+      <br>
+    <a href="/" class="btn btn-warning btn-lg">All Articles</a>
+    
+    <a href="/articles/edit/<%= article.id %>" class="btn btn-info btn-lg">Edit</a>
+    <br>
+    
+  </div>
+  <br>
+  <button data-clipboard-target="#copy_art" class="btn btn-danger btn-block" id="copy_btn">Copy Article</button>
+  <br><br>
+    <div class="bc">
+      <br>
+      <div class="inside" id="copy_art" >
+        <!-- <input type="text"> -->
+      <%- article.sanitizedHtml %>
+      
+    </div>
+    <br>
+    </div>
+  </div>
+  <%- include('darkmode.ejs') %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="dist/clipboard.min.js"></script>
+  <script>
+    
+    var clipboard = new ClipboardJS("#copy_btn");
+    clipboard.on('success',function(e){
+      M.toast({
+        html:"Copied Successfully",
+        
+      });
+    });
+    // $('#copy_btn').alert();
+  
+  </script>
+</body>
+</html>
